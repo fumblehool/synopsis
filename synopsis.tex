@@ -1,0 +1,73 @@
+\documentclass[12pt,includeheadfoot,a4paper]{report}
+\usepackage[print,nopanel]{pdfscreen}
+%\begin{print}
+\usepackage{classes/lipsum}% http://ctan.org/pkg/lipsum
+\usepackage{classes/titletoc}
+%\section{type}
+\usepackage{classes/lastpage}
+\usepackage{classes/macro}
+\usepackage{classes/float}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{array}
+\newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{xcolor, colortbl}
+\definecolor{Gray}{gray}{0.85}
+\usepackage{verbatim}
+\usepackage[Glenn]{fncychap}
+\usepackage{placeins}
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+\lhead{\bfseries Multi-Threaded Geometric Rendering}
+\rhead{}
+\usepackage[left=2.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
+\pagestyle{fancy}
+%\end{print}
+\margins{2.5cm}{1.5cm}{1.5cm}{1.5cm}
+\linespread{1.25}
+\screensize{8cm}{9cm}
+\overlay{overlay8.pdf}
+\usepackage{graphicx}
+
+
+\begin{document}
+	\input{input/titlepage.tex} % TITLE PAGE
+	\begin{screen}
+		\ppttitle
+	\end{screen}
+	\thispagestyle{empty} 
+	\pagetitle
+	\newpage
+	\pagenumbering{Roman}
+	\cfoot{\thepage}
+
+	\input{input/abstract.tex} % ABSTRACT
+	\newpage
+
+	\input{input/acknowledgement.tex}
+	\newpage
+	
+	% \tableofcontents
+
+	% \listoffigures
+
+	\pagenumbering{arabic}
+	\cfoot{\thepage}
+
+	\input{input/introduction.tex}
+	\newpage	
+	
+	\input{input/feasibility.tex}
+	\newpage
+
+	\input{input/planning_of_work.tex}
+	\newpage
+
+	\input{input/facilities_required_for_proposed_work.tex}
+	\newpage
+ 
+	\input{input/references.tex}
+\end{document}
+
