@@ -1,42 +1,77 @@
 \chapter{Facilities Required for Proposed Work}
-\section{Software Requirements}
-The following softwares may be used while developing and testing the software:
-\begin{enumerate} 
-	\item A C++ compiler supporting C++11
+\section{Predictive Analytic Requirements}
+Building a decision requirements model 
+to specify business understanding at the very beginning 
+of 
+a predictive analytic project allows the creation of predictive analytic requirements that:\begin{enumerate} 
+	\item Describe a clear target for the project.
+The 
+decisions that the predictive analytic will 
+influence are specified. The decision requirements diagram links these decisions to the 
+ultimate business metrics or objectives that will be impacted by the analytic
+.
 	
-	\item Qt$  4.4 \rightarrow 5.x $ (http://qt.io/ )
+	\item Identif
+y
+the analytics to be developed.
+Each 
+piece of analytic knowledge can be 
+described a
+long with the information to be analyzed to produce 
+it
+.
 	
-	\item QScintilla2 $ (2.7 \rightarrow $)(http://www.riverbankcomputing.co.uk/software/qscintilla/)
+	\item Is specific about which decisions are being influenced.
+The decision requirements 
+diagram shows w
+hich part of the 
+decision making is influenced, exactly, 
+by each 
+predictive analytic model being developed and what other factors influence that 
+decision
+-
+making.
 	
-	\item CGAL ($ 3.6 \rightarrow $) (http://www.cgal.org/)
+	\item Is specific about deployment.
+The links for the decisions involved show w
+hich 
+organizations will be involved
+, w
+hich business processes will be impacted
+and w
+hich 
+systems will have to be altered.
+
+A complete set of requirements for a predictive analytic project 
+should include other project 
+details such as executive sponsor, timeline, resources, planned analytic approach
+, 
+etc. The 
+d
+ecision 
+r
+equirements 
+m
+ode
+l allows the business 
+problem being addressed by 
+the project to be 
+described more precisely
+,
+but it does not replace these other elements.
 	
-	\item GMP (5.x) (http://www.gmplib.org/)
-	
-	\item MPFR (3.x)(http://www.mpfr.org/)
-	
-	\item cmake ($ 2.8 \rightarrow $, required by CGAL and the test framework))(http://www.cmake.org/)
-	
-	\item boost ($ 1.35 \rightarrow $) (http://www.boost.org/)
-	
-	\item OpenCSG ($ 1.3.2 \rightarrow $)(http://www.opencsg.org/)
-	
-	\item GLEW ($ 1.5.4 \rightarrow $)(http://glew.sourceforge.net/)
-	
-	\item Eigen (3.x)(http://eigen.tuxfamily.org/)
-	
-	\item glib2 (2.x)(https://developer.gnome.org/glib/)
-	
-	\item fontconfig ($ 2.10 \rightarrow  $)(http://fontconfig.org/)
-	
-	\item freetype2 ($ 2.4 \rightarrow  $)(http://freetype.org/)
-	
-	\item harfbuzz ($ 0.9.19 \rightarrow  $)(http://harfbuzz.org/)
-	
-	\item Bison ($ 2.4 \rightarrow $ )(http://www.gnu.org/software/bison/)
-	
-	\item Flex ($ 2.5.35 \rightarrow  $)(http://flex.sourceforge.net/)
-	
-	\item pkg-config ($ 0.26 \rightarrow $ )(http://www.freedesktop.org/wiki/Software/pkg-config/)
-	
+\end{enumerate}
+
+\section{Software Requirements:}
+\begin{enumerate}
+\item Python 2.7
+\item Python pip
+\item Anaconda
+\end{enumerate}
+
+\section{Python Packages Dependencies}
+\begin{enumerate}
+\item Pandas
+\item Sklearn
 \end{enumerate}
 

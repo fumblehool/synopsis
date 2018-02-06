@@ -1,16 +1,8 @@
 \begin{Large}
 \centertext{Abstract}
 \end{Large}
-OpenSCAD is an open source organization that serves a free software to create solid 3d CAD objects. OpenSCAD has in a way redefined how easy 3D modeling can be. But the Wikipedia article on OpenSCAD says that it is a non-interactive modeler, but rather a 3D compiler based on a textual description language.
+\noindent This research is concerned with predicting the price of Ripple using machine learning. The goal is to ascertain with what accuracy can the direction of Ripple price in USD can be predicted.\\
 
-In OpenSCAD when the object is described using the textual description language, the description is first compiled (following intermediate forms) into a node tree. This node tree consists, in geometric terms, the details of every component of the final design. Then follows the rendering process. This process is very CPU intensive and eats up a lot of cycles. This involves traverssing the node tree from the very bottom and evaluating nodes as they are encountered. Each evaluated node is then rendered on the screen.
+\noindent The price data is sourced from the Ripple Price Index. The task is achieved with varying degrees of success through the implementation of a Bayesian optimised recurrent neural network (RNN) and Long Short Term Memory (LSTM) network.  The LSTM achieves the highest classification accuracy of 52\% and a RMSE of 8\%.\\ 
 
-In its present form, the compile and render processes are done in one thread under the one process. This is of course not the most optimal ways of going about this problem.
-
-Adding multiple processor threading support to the compile and render feature will ensure that the system is run on 100 percentage on all available cores/ht rather than just the one.
-
-This issue may be clear in intent but involves many complex considerations. One cannot just start implementing multithreading on these processes. The libraries which are being used for the rendering process are not thread safe (CGAL). Hence it becomes very difficult to implement this directly. Our project is as much about implementing a solution to this as it is about looking for one. Finding the best possible approach for achieving this is one big milestone that needs to accomplished before begining to realising that approach.
-
-One of the original ideas was to create a dependency graph (as in a makefile) for the tree, and then traverse the graph, to keep the original tree const and to avoid multi-threaded access to the node tree. This seems a promising approach but remains to explored thoroughly.
-
-Other issues pertaining to this project are adding features to halt an ongoing render process, fixing some low hanging grammer issues and fixing the mechanism that allows various nodes to be tagged as pseudo root nodes.
+\noindent The popular ARIMA model for time series forecasting is implemented as a comparison to the deep learning models. As expected,  the non-linear deep learning methods outperform the ARIMA forecast which performs poorly.  Wavelets are explored as part of the time series narrative but not implemented for prediction purposes.  Finally, both deep learning models are benchmarked on both a GPU and a CPU with the training time on the GPU outperforming the CPU implementation by 67.7\%.

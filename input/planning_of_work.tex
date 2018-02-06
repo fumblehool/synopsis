@@ -1,19 +1,18 @@
 \chapter{PLANNING OF WORK}
 
-The basic implementation of this project will be done using prototype model and their will also be need to modify the structure of the project. Final flow of project will be fig. \ref{fig:finalflow}
+We’re going to employ a Long Short Term Memory (LSTM) model; it’s a particular type of deep learning model that is well suited to time series data (or any data with temporal/spatial/structural order e.g. movies, sentences, etc.).
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{images/finalflow}
-\caption{}
-\label{fig:finalflow}
-\end{figure}
 
 \section{Steps of Implementation}
-\begin{itemize}
-	\item The first thing that needs to be done is understanding the flow of the software and figuring out what sections of code needs to be parallelized.
-	\item After forming a firmer understanding of the problem, it will be required to check all the relevant data structures involved in evaluating the tree nodes. It will also be checked if any data structures used are needed to modified or not.
-	\item After fixing the appropriate data structures, all the feasible and plausible approaches will be explored. Each approach will be evaluated on its merits and feasibility.
-	\item Among all the options the one which is works well across all platform will be chosen. It goes without saying that the chosen solution must also meet all the requirement and implement the solution efficiently.
-	\item After going through all of this the implementation will begin.
-\end{itemize}
+\subsection{Data}
+Before we build the model, we need to obtain some data for it. There’s a dataset on Kaggle that details minute by minute Bitcoin prices (plus some other factors) for the last few years (featured on that other blog post). Over this timescale, noise could overwhelm the signal, so we’ll opt for daily prices. The issue here is that we may have not sufficient data (we’ll have hundreds of rows rather than thousands or millions). In deep learning, no model can overcome a severe lack of data. I also don’t want to rely on static files, as that’ll complicate the process of updating the model in the future with new data. Instead, we’ll aim to pull data from websites and APIs.
+
+As we’ll be combining multiple cryptos in one model, it’s probably a good idea to pull the data from one source. We’ll use coinmarketcap.com. For now, we’ll only consider Bitcoin and Ether, but it wouldn’t be hard to add the latest overhyped altcoin using this approach. Before we import the data, we must load some python packages that will make our lives so much easier.
+\subsection{Training}
+
+We have some data, so now we need to build a model. In deep learning, the data is typically split into training and test sets. The model is built on the training set and subsequently evaluated on the unseen test set. In time series models, we generally train on one period of time and then test on another separate period. 
+As such, the training data may not be representative of the test data, undermining the model’s ability to generalise to unseen data.The most basic model is to set tomorrow’s price equal to today’s price (which we’ll crudely call a lag model). 
+
+\section{Long Short Term Memory (LSTM)}
+
+Long short-term memory (LSTM) units (or blocks) are a building unit for layers of a recurrent neural network (RNN). A RNN composed of LSTM units is often called an LSTM network. A common LSTM unit is composed of a cell, an input gate, an output gate and a forget gate. The cell is responsible for "remembering" values over arbitrary time intervals; hence the word "memory" in LSTM. Each of the three gates can be thought of as a "conventional" artificial neuron, as in a multi-layer (or feedforward) neural network: that is, they compute an activation (using an activation function) of a weighted sum. Intuitively, they can be thought as regulators of the flow of values that goes through the connections of the LSTM; hence the denotation "gate". There are connections between these gates and the cell.
