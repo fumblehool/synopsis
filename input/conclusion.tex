@@ -1,0 +1,25 @@
+\chapter{Conclusion}
+
+\section{Summary}
+We've collected some crypto data and fed it into a deeply intelligent machine learning LSTM model. Unfortunately, its predictions were not that different from just spitting out the previous value. We can make the model learn more sophisticated behaviours by - \\
+    \begin{itemize}
+        \item \textbf{Change Loss Function:} MAE doesn't really encourage risk taking. For example, under mean squared error (MSE), the LSTM model would be forced to place more importance on detecting spikes/troughs. More bespoke trading focused loss functions could also move the model towards less conservative behaviours.
+
+        \item \textbf{Penalise conservative AR-type models:} This would incentivise the deep learning algorithm to explore more risky/interesting models. Easier said than done!
+
+        \item \textbf{Get more and/or better data:} If past prices alone are sufficient to decently forecast future prices, we need to include other features that provide comparable predictive power. That way, the LSTM model wouldn't be so reliant on past prices, potentially unlocking more complex behaviours. This is probably the best and hardest solution.
+    \end{itemize}
+It's entirely possible that there is no detectable pattern to changes in crypto prices; that no model (however deep) can separate the signal from the noise (similar to the merits of using deep learning to predict earthquakes). And any pattern that does appear can disappear as quickly. All of this suggests you might as well save yourself some time and stick to autoregression.
+
+
+The LSTM model returns an average error of about 0.04 on the ripple prices, crushing the corresponding random walk models.
+
+
+\section{Future Scope}
+
+\begin{itemize}
+    \item Write and publish a Research Paper using the work-done and finding of this project.
+    \item Further train model to get more accurate results.
+    \item Obtain and refine Dataset from services like - coinbase.
+    \item Improving the performance of deep learning model by using GPUs.
+\end{itemize}
