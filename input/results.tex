@@ -13,16 +13,24 @@ If everything went to plan, then we'd expect the training error to have graduall
 
 \section{Single Point Prediction}
 Once we have trained our model, it is time to test our model. Initially, we'll test for one particular point. This point will be from our Testing data-set. A good strategy is to keep 80\% of data for training and 20\% for testing.
-
+\newpage
 \begin{figure}[h]
-    \centering \includegraphics[scale=0.5]{images/s-p.png}
+    \centering \includegraphics[scale=0.7]{images/s-p.png}
     \caption{Single TimePoint Prediction}
 \end{figure}
 
-\section{Calculating Error}
-Moving back to the single point predictions, our deep machine artificial neural model looks okay, but so did that boring random walk model. Like the random walk model, LSTM models can be sensitive to the choice of random seed (the model weights are initially randomly assigned). So, if we want to compare the two models, we'll run each one multiple (say, 25) times to get an estimate for the model error. The error will be calculated as the absolute difference between the actual and predicted closing prices changes in the test set.
+\section{Multiple Point Prediction}
+Now, we will try to test our model for multiple points. We will use multiple points from our testing data-set. For sake of simplicity, we are taking 5 points i.e. 5 day predictions.
+
 \begin{figure}[h]
-    \centering \includegraphics[scale=0.5]{images/error.png}
+    \centering \includegraphics[scale=0.7]{images/multi.png}
+    \caption{5 TimePoint Prediction}
+\end{figure}
+
+\section{Calculating Error}
+Moving back to the single point predictions, our deep machine artificial neural model looks okay, but so did that boring random walk model. Like the random walk model, LSTM models can be sensitive to the choice of random seed (the model weights are initially randomly assigned). So, if we want to compare the two models, we'll run each one multiple (say, 25) times to get an estimate for the model error. The error will be calculated as the absolute difference between the actual and predicted closing prices changes in the test set. One thing to note here is that we are taking only 25 runs for estimation. This estimation might not be very accurate. However, accuracy can be increased if we take large number of runs into account.
+\begin{figure}[h]
+    \centering \includegraphics[scale=0.7]{images/error.png}
     \caption{Calculating Error}
 \end{figure}
  Those graphs show the error on the test set after 25 different initialisations of each model. The LSTM model returns an average error of about 0.0125 on ripple prices, crushing the corresponding random walk models.
