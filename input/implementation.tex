@@ -67,3 +67,46 @@ We’re going to employ a Long Short Term Memory (LSTM) model; it’s a particul
         \centering \includegraphics[scale=0.7]{images/lstm.png}
         \caption{Expected Results}
     \end{figure}
+
+
+\section{Training and Random Walk}
+
+We have some data, so now we need to build a model. In deep learning, the data is typically split into training and test sets. The model is built on the training set and subsequently evaluated on the unseen test set. In time series models, we generally train on one period of time and then test on another separate period. Rather arbitrarily, we'll set the cut-off date to June 1st 2017 (i.e. model will be trained on data before that date and assessed on data after it).
+
+\begin{figure}[h]
+    \centering \includegraphics[scale=0.5]{images/training.png}
+    \caption{Splitting data into Test and Train}
+\end{figure}
+
+
+The training period mostly consists of periods when cryptos were relatively cheaper. As such, the training data may not be representative of the test data, undermining the model's ability to generalise to unseen data. The most basic model is to set tomorrow's price equal to today's price (which we'll crudely call a lag model). This is how we'd define such a model in graphical terms:
+
+\begin{figure}[h]
+    \centering \includegraphics[scale=0.5]{images/lag.png}
+    \caption{Simple Lag Model}
+\end{figure}
+
+First, we may want to make sure the daily change in price follows a normal distribution. We'll plot the histogram of values. This will give us a graphical tool to check for daily changes in values over time.
+
+\begin{figure}[h]
+    \centering \includegraphics[scale=0.5]{images/price-change.png}
+    \caption{Daily Price Change Histogram}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering \includegraphics[scale=0.5]{images/single-price.png}
+    \caption{Single Point Random Walk}
+\end{figure}    
+
+
+\section{Long Short Term Memory (LSTM)}
+We don't need to build the network from scratch. There exists packages that include standard implementations of various deep learning algorithme - TensorFlow, Keras, PyTorch etc. We are using Keras here because it is the most intuitive for non-experts.
+
+\begin{figure}[h]
+    \centering \includegraphics[scale=0.5]{images/lstm-data.png}
+    \caption{LSTM Training table}
+\end{figure}
+
+
+Our LSTM model will use previous data to predict the next day's closing price of a specific coin. We must decide how many previous days it will have access to. We build little data frames consisting of 10 consecutive days of data (called windows), so the first window will consist of the 0-9th rows of the training set, the second will be the rows 1-10, etc. Picking a small window size means we can feed more windows into our model; the downside is that the model may not have sufficient information to detect complex long term behaviours.
